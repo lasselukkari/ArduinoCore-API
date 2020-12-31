@@ -19,25 +19,33 @@
 TEST_CASE ("Testing String::equals(const String &) with exit status PASS", "[String-equals-01]")
 {
   arduino::String str1("Hello"), str2("Hello");
-  REQUIRE(str1.equals(str2) == 1);
+  CHECK(str1.equals(str2) == 1);
+  CHECK(str1 == str2);
+  CHECK_FALSE(str1 != str2);
 }
 
 TEST_CASE ("Testing String::equals(const String &) with exit status FAIL", "[String-equals-02]")
 {
   arduino::String str1("Hello"), str2("World");
-  REQUIRE(str1.equals(str2) == 0);
+  CHECK(str1.equals(str2) == 0);
+  CHECK(str1 != str2);
+  CHECK_FALSE(str1 == str2);
 }
 
 TEST_CASE ("Testing String::equals(const char *) with exit status PASS", "[String-equals-03]")
 {
   arduino::String str1("Hello");
-  REQUIRE(str1.equals("Hello") == 1);
+  CHECK(str1.equals("Hello") == 1);
+  CHECK(str1 == "Hello");
+  CHECK_FALSE(str1 != "Hello");
 }
 
 TEST_CASE ("Testing String::equals(const char *) with exit status FAIL", "[String-equals-04]")
 {
   arduino::String str1("Hello");
-  REQUIRE(str1.equals("World") == 0);
+  CHECK(str1.equals("World") == 0);
+  CHECK(str1 != "World");
+  CHECK_FALSE(str1 == "World");
 }
 
 TEST_CASE ("Testing String::equalsIgnoreCase(const String &) PASS with NON-empty string", "[String-equalsIgnoreCase-05]")
