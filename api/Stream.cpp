@@ -86,6 +86,18 @@ int Stream::peekNextDigit(LookaheadMode lookahead, bool detectDecimal)
 // Public Methods
 //////////////////////////////////////////////////////////////
 
+int Stream::read(uint8_t *buffer, size_t length)
+{
+  size_t count = 0;
+  while (count < length) {
+    int c = read();
+    if (c < 0) break;
+    *buffer++ = (char)c;
+    count++;
+  }
+  return count;
+}
+
 void Stream::setTimeout(unsigned long timeout)  // sets the maximum number of milliseconds to wait
 {
   _timeout = timeout;

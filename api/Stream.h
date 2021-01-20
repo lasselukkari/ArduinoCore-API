@@ -59,6 +59,7 @@ class Stream : public Print
   public:
     virtual int available() = 0;
     virtual int read() = 0;
+    virtual int read(uint8_t *buffer, size_t length) = 0;
     virtual int peek() = 0;
 
     Stream() {_timeout=1000;}
